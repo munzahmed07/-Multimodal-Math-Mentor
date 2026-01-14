@@ -19,9 +19,10 @@ class AgentState(TypedDict):
     messages: Annotated[List[str], operator.add]
 
 
-# --- 2. SETUP LLM & TOOLS ---
+# --- 2. SETUP LLM ---
+# Note: We do NOT load the retriever here globally anymore.
+# This prevents the crash on Cloud deployment.
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
-retriever = get_retriever()
 
 # --- 3. AGENT NODES ---
 
@@ -29,6 +30,7 @@ retriever = get_retriever()
 def parser_node(state: AgentState):
     """Agent 1: Parser"""
     print("--- 1. PARSER AGENT ---")
+    # In a full production app, this would parse JSON. For MVP, we pass it through.
     parsed_data = {"problem": state["input_text"],
                    "topic": "Math", "needs_clarification": False}
     return {"parsed_data": parsed_data, "messages": ["Parser: Processed input."]}
@@ -37,15 +39,24 @@ def parser_node(state: AgentState):
 def solver_node(state: AgentState):
     """Agent 3: Solver"""
     print("--- 3. SOLVER AGENT ---")
+
+    # --- LAZY LOADING FIX ---
+    # We initialize the retriever ONLY when the solver runs.
+    # This ensures the DB has been built by app.py first.
+    retriever = get_retriever()
+
+    # 1. Retrieve Context
     docs = retriever.invoke(state["parsed_data"]["problem"])
     context = "\n".join([d.page_content for d in docs])
 
+    # 2. Solve
     prompt = ChatPromptTemplate.from_messages([
         ("system", "You are a JEE Math Tutor. Solve the problem using the provided context. Show steps."),
         ("user", "Problem: {problem}\nContext: {context}")
     ])
     response = llm.invoke(prompt.format(
         problem=state["parsed_data"]["problem"], context=context))
+
     return {"solution_plan": response.content, "retrieved_context": context}
 
 
@@ -79,9 +90,11 @@ workflow.add_node("parser", parser_node)
 workflow.add_node("solver", solver_node)
 workflow.add_node("verifier", verifier_node)
 workflow.add_node("explainer", explainer_node)
+
 workflow.set_entry_point("parser")
 workflow.add_edge("parser", "solver")
 workflow.add_edge("solver", "verifier")
 workflow.add_edge("verifier", "explainer")
 workflow.add_edge("explainer", END)
+
 app_graph = workflow.compile()
