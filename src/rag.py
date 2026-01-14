@@ -15,11 +15,11 @@ KB_PATH = "./knowledge_base"
 
 def initialize_vector_store():
     """Ingests documents and creates the Vector DB."""
-    print("🔄 --- RAG INIT STARTED ---")
+    print(" --- RAG INIT STARTED ---")
 
     if not os.path.exists(KB_PATH):
         os.makedirs(KB_PATH)
-        print(f"⚠️ Created missing folder: {KB_PATH}")
+        print(f" Created missing folder: {KB_PATH}")
         return
 
     # 1. Load Documents
@@ -27,7 +27,7 @@ def initialize_vector_store():
     docs = loader.load()
 
     if not docs:
-        print("❌ No documents found in knowledge_base/")
+        print(" No documents found in knowledge_base/")
         return
     print(f"   Found {len(docs)} documents.")
 
@@ -52,7 +52,7 @@ def initialize_vector_store():
     # Then add the documents
     vectorstore.add_documents(documents=splits)
 
-    print(f"✅ SUCCESS: Vector store created at {DB_PATH}")
+    print(f" SUCCESS: Vector store created at {DB_PATH}")
 
 
 def get_retriever():
