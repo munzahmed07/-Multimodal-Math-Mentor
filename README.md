@@ -67,6 +67,7 @@ graph TD
 
 ```
 
+---
 
 ## 💻 Tech Stack
 
@@ -123,3 +124,9 @@ streamlit run app.py
 ├── requirements.txt    # Python dependencies
 └── memory.json         # Self-learning storage
 ```
+
+---
+
+## Created By
+
+Built by Munzer Ahmed
