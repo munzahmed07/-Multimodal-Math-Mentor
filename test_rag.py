@@ -1,4 +1,4 @@
-# test_rag.py
+
 from src.rag import get_retriever
 
 retriever = get_retriever()
