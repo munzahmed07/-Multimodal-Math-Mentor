@@ -51,7 +51,7 @@ The system uses a directed graph of agents to ensure accuracy:
 
 ```mermaid
 graph TD
-    User[User Input (Text/Image/Audio)] --> MemoryCheck{In Memory?}
+    User["User Input (Text/Image/Audio)"] --> MemoryCheck{In Memory?}
     MemoryCheck -- Yes --> Instant[Return Cached Answer]
     MemoryCheck -- No --> Parser[Parser Agent]
     
@@ -63,7 +63,7 @@ graph TD
     end
     
     Explainer --> UI[Streamlit UI]
-    UI -- User Feedback ✅ --> Save[Save to Memory.json]
+    UI -- "User Feedback ✅" --> Save[Save to Memory.json]
 
 ```
 
