@@ -6,7 +6,7 @@ question = "What is the derivative of x^5? Explain it simply."
 print(f" TEST STARTED: '{question}'")
 print("--------------------------------------------------")
 
-# 2. Define the input state
+
 inputs = {
     "input_text": question,
     "messages": []
