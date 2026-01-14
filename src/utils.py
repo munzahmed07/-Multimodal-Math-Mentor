@@ -3,7 +3,7 @@ from langchain_openai import ChatOpenAI
 from openai import OpenAI
 import os
 
-# Initialize clients
+
 llm_vision = ChatOpenAI(model="gpt-4o", max_tokens=1000)
 client = OpenAI()
 
