@@ -1,0 +1,14 @@
+TOPIC: JEE CALCULUS (LIMITS & DERIVATIVES)
+1. Standard Limits:
+   - lim(x->0) (sin x / x) = 1
+   - lim(x->0) (e^x - 1) / x = 1
+   - lim(x->0) (ln(1+x) / x) = 1
+2. Differentiation Rules:
+   - d/dx(x^n) = nx^(n-1)
+   - d/dx(sin x) = cos x
+   - d/dx(tan x) = sec^2 x
+   - d/dx(uv) = u'v + uv' (Product Rule)
+   - d/dx(u/v) = (vu' - uv') / v^2 (Quotient Rule)
+3. Integration Basics:
+   - ∫ x^n dx = x^(n+1)/(n+1) + C
+   - ∫ (1/x) dx = ln|x| + C

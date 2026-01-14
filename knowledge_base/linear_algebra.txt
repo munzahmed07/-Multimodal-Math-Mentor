@@ -1,0 +1,5 @@
+TOPIC: LINEAR ALGEBRA & MATRICES
+1. Determinant of 2x2 Matrix [[a,b],[c,d]]: det(A) = ad - bc.
+2. Matrix Multiplication: Valid only if columns of 1st equals rows of 2nd.
+3. Transpose Properties: (AB)^T = B^T A^T.
+4. Singular Matrix: A square matrix is singular if |A| = 0.

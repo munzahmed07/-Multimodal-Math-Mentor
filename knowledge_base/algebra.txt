@@ -1,0 +1,13 @@
+TOPIC: JEE ALGEBRA & QUADRATICS
+1. Quadratic Equation:
+   - Roots of ax^2 + bx + c = 0 are x = (-b ± sqrt(D)) / 2a, where D = b^2 - 4ac.
+   - Sum of roots (α+β) = -b/a.
+   - Product of roots (αβ) = c/a.
+2. Logarithms:
+   - log_a(mn) = log_a(m) + log_a(n)
+   - log_a(m^n) = n * log_a(m)
+   - Change of base: log_a(b) = log_c(b) / log_c(a)
+3. Progressions:
+   - AP nth term: Tn = a + (n-1)d
+   - GP nth term: Tn = a * r^(n-1)
+   - Sum of infinite GP: S_inf = a / (1 - r) for |r| < 1

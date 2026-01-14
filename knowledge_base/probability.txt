@@ -1,0 +1,6 @@
+TOPIC: PROBABILITY & STATISTICS
+1. Addition Theorem: P(A ∪ B) = P(A) + P(B) - P(A ∩ B).
+2. Conditional Probability: P(A|B) = P(A ∩ B) / P(B).
+3. Independent Events: P(A ∩ B) = P(A) * P(B).
+4. Bayes' Theorem: P(Ei|A) = (P(A|Ei) * P(Ei)) / Σ(P(A|Ej) * P(Ej)).
+5. Binomial Distribution: P(X=r) = nCr * p^r * q^(n-r), where p+q=1.
